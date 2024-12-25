@@ -1,0 +1,17 @@
+name: testing
+on: [push]
+jobs:
+  build_test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with: 
+          dotnet-version: '4.8'
+      - name: Build
+        run: dotnet build src/ex02/ex02/ex02.csproj
+      - name: Test
+        run: dotnet test src/ex02/XUnitTestProject1/XUnitTestProject1.csproj
+      
